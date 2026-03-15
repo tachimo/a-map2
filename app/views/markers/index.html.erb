@@ -2,7 +2,7 @@
 
 <div id="map" style="width:100%;height:500px;"></div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRpHa8P4MCh0IeHy-7SkpfESJO7fNTdE8"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_API_KEY"] %>"></script>
 
 <script>
 const markers = <%= @markers.to_json.html_safe %>;
