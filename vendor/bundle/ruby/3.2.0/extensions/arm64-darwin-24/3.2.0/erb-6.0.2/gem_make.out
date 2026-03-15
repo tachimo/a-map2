@@ -1,0 +1,20 @@
+current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/erb-6.0.2/ext/erb/escape
+/Users/dai_tachimoto/.rbenv/versions/3.2.2/bin/ruby extconf.rb
+checking for rb_ext_ractor_safe() in ruby.h... yes
+creating Makefile
+
+current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/erb-6.0.2/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260315-57227-psmutu sitelibdir\=./.gem.20260315-57227-psmutu clean
+
+current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/erb-6.0.2/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260315-57227-psmutu sitelibdir\=./.gem.20260315-57227-psmutu
+compiling escape.c
+linking shared-object erb/escape.bundle
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+
+current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/erb-6.0.2/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260315-57227-psmutu sitelibdir\=./.gem.20260315-57227-psmutu install
+/usr/bin/install -c -m 0755 escape.bundle ./.gem.20260315-57227-psmutu/erb
+
+current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/erb-6.0.2/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260315-57227-psmutu sitelibdir\=./.gem.20260315-57227-psmutu clean
