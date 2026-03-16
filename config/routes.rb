@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
+  resources :markers, only: [:index, :create]
   root "markers#index"
-  post "/markers", to: "markers#create"
 end
 

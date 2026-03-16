@@ -102,3 +102,5 @@ production:
     <<: *primary_production
     database: a_map_production_cable
     migrations_paths: db/cable_migrate
+  production:
+    url: <%= ENV["DATABASE_URL"] %>
