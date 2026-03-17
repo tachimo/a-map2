@@ -16,17 +16,17 @@ checking for ttyname_r()... yes
 creating Makefile
 
 current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/io-console-0.8.2/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20260315-57227-dpg5td sitelibdir\=./.gem.20260315-57227-dpg5td clean
+make DESTDIR\= sitearchdir\=./.gem.20260317-62725-f15yx0 sitelibdir\=./.gem.20260317-62725-f15yx0 clean
 
 current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/io-console-0.8.2/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20260315-57227-dpg5td sitelibdir\=./.gem.20260315-57227-dpg5td
+make DESTDIR\= sitearchdir\=./.gem.20260317-62725-f15yx0 sitelibdir\=./.gem.20260317-62725-f15yx0
 compiling console.c
 linking shared-object io/console.bundle
 ld: warning: ignoring duplicate libraries: '-lruby.3.2'
 
 current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/io-console-0.8.2/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20260315-57227-dpg5td sitelibdir\=./.gem.20260315-57227-dpg5td install
-/usr/bin/install -c -m 0755 console.bundle ./.gem.20260315-57227-dpg5td/io
+make DESTDIR\= sitearchdir\=./.gem.20260317-62725-f15yx0 sitelibdir\=./.gem.20260317-62725-f15yx0 install
+/usr/bin/install -c -m 0755 console.bundle ./.gem.20260317-62725-f15yx0/io
 
 current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/io-console-0.8.2/ext/io/console
-make DESTDIR\= sitearchdir\=./.gem.20260315-57227-dpg5td sitelibdir\=./.gem.20260315-57227-dpg5td clean
+make DESTDIR\= sitearchdir\=./.gem.20260317-62725-f15yx0 sitelibdir\=./.gem.20260317-62725-f15yx0 clean

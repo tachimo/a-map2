@@ -6,10 +6,10 @@ checking for whether -fvisibility=hidden is accepted as CFLAGS... yes
 creating Makefile
 
 current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/prism-1.9.0/ext/prism
-make DESTDIR\= sitearchdir\=./.gem.20260315-57227-qr819s sitelibdir\=./.gem.20260315-57227-qr819s clean
+make DESTDIR\= sitearchdir\=./.gem.20260317-62725-py8dng sitelibdir\=./.gem.20260317-62725-py8dng clean
 
 current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/prism-1.9.0/ext/prism
-make DESTDIR\= sitearchdir\=./.gem.20260315-57227-qr819s sitelibdir\=./.gem.20260315-57227-qr819s
+make DESTDIR\= sitearchdir\=./.gem.20260317-62725-py8dng sitelibdir\=./.gem.20260317-62725-py8dng
 compiling api_node.c
 compiling api_pack.c
 compiling extension.c
@@ -38,8 +38,8 @@ linking shared-object prism/prism.bundle
 ld: warning: ignoring duplicate libraries: '-lruby.3.2'
 
 current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/prism-1.9.0/ext/prism
-make DESTDIR\= sitearchdir\=./.gem.20260315-57227-qr819s sitelibdir\=./.gem.20260315-57227-qr819s install
-/usr/bin/install -c -m 0755 prism.bundle ./.gem.20260315-57227-qr819s/prism
+make DESTDIR\= sitearchdir\=./.gem.20260317-62725-py8dng sitelibdir\=./.gem.20260317-62725-py8dng install
+/usr/bin/install -c -m 0755 prism.bundle ./.gem.20260317-62725-py8dng/prism
 
 current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/prism-1.9.0/ext/prism
-make DESTDIR\= sitearchdir\=./.gem.20260315-57227-qr819s sitelibdir\=./.gem.20260315-57227-qr819s clean
+make DESTDIR\= sitearchdir\=./.gem.20260317-62725-py8dng sitelibdir\=./.gem.20260317-62725-py8dng clean

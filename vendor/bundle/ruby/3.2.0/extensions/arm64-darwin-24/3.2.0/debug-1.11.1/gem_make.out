@@ -3,18 +3,18 @@ current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/rub
 creating Makefile
 
 current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/debug-1.11.1/ext/debug
-make DESTDIR\= sitearchdir\=./.gem.20260315-57227-jndbgb sitelibdir\=./.gem.20260315-57227-jndbgb clean
+make DESTDIR\= sitearchdir\=./.gem.20260317-62725-yw7l5q sitelibdir\=./.gem.20260317-62725-yw7l5q clean
 
 current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/debug-1.11.1/ext/debug
-make DESTDIR\= sitearchdir\=./.gem.20260315-57227-jndbgb sitelibdir\=./.gem.20260315-57227-jndbgb
+make DESTDIR\= sitearchdir\=./.gem.20260317-62725-yw7l5q sitelibdir\=./.gem.20260317-62725-yw7l5q
 compiling debug.c
 compiling iseq_collector.c
 linking shared-object debug/debug.bundle
 ld: warning: ignoring duplicate libraries: '-lruby.3.2'
 
 current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/debug-1.11.1/ext/debug
-make DESTDIR\= sitearchdir\=./.gem.20260315-57227-jndbgb sitelibdir\=./.gem.20260315-57227-jndbgb install
-/usr/bin/install -c -m 0755 debug.bundle ./.gem.20260315-57227-jndbgb/debug
+make DESTDIR\= sitearchdir\=./.gem.20260317-62725-yw7l5q sitelibdir\=./.gem.20260317-62725-yw7l5q install
+/usr/bin/install -c -m 0755 debug.bundle ./.gem.20260317-62725-yw7l5q/debug
 
 current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/debug-1.11.1/ext/debug
-make DESTDIR\= sitearchdir\=./.gem.20260315-57227-jndbgb sitelibdir\=./.gem.20260315-57227-jndbgb clean
+make DESTDIR\= sitearchdir\=./.gem.20260317-62725-yw7l5q sitelibdir\=./.gem.20260317-62725-yw7l5q clean

@@ -10,17 +10,17 @@ checking for cpuid.h... no
 creating Makefile
 
 current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/json-2.19.1/ext/json/ext/parser
-make DESTDIR\= sitearchdir\=./.gem.20260315-57227-mgq7lg sitelibdir\=./.gem.20260315-57227-mgq7lg clean
+make DESTDIR\= sitearchdir\=./.gem.20260317-62725-1nurmb sitelibdir\=./.gem.20260317-62725-1nurmb clean
 
 current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/json-2.19.1/ext/json/ext/parser
-make DESTDIR\= sitearchdir\=./.gem.20260315-57227-mgq7lg sitelibdir\=./.gem.20260315-57227-mgq7lg
+make DESTDIR\= sitearchdir\=./.gem.20260317-62725-1nurmb sitelibdir\=./.gem.20260317-62725-1nurmb
 compiling parser.c
 linking shared-object json/ext/parser.bundle
 ld: warning: ignoring duplicate libraries: '-lruby.3.2'
 
 current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/json-2.19.1/ext/json/ext/parser
-make DESTDIR\= sitearchdir\=./.gem.20260315-57227-mgq7lg sitelibdir\=./.gem.20260315-57227-mgq7lg install
-/usr/bin/install -c -m 0755 parser.bundle ./.gem.20260315-57227-mgq7lg/json/ext
+make DESTDIR\= sitearchdir\=./.gem.20260317-62725-1nurmb sitelibdir\=./.gem.20260317-62725-1nurmb install
+/usr/bin/install -c -m 0755 parser.bundle ./.gem.20260317-62725-1nurmb/json/ext
 
 current directory: /Users/dai_tachimoto/workspace/a-map2/a-map/vendor/bundle/ruby/3.2.0/gems/json-2.19.1/ext/json/ext/parser
-make DESTDIR\= sitearchdir\=./.gem.20260315-57227-mgq7lg sitelibdir\=./.gem.20260315-57227-mgq7lg clean
+make DESTDIR\= sitearchdir\=./.gem.20260317-62725-1nurmb sitelibdir\=./.gem.20260317-62725-1nurmb clean
