@@ -6,6 +6,7 @@
 
 <script>
 let map;
+let markers = [];
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
@@ -13,42 +14,25 @@ function initMap() {
     zoom: 12
   });
 
-  loadMarkers();
-
+  // クリックでマーカー追加（DB使わない）
   map.addListener("click", function(e) {
-    createMarker(e.latLng.lat(), e.latLng.lng());
-  });
-}
-
-function createMarker(lat, lng) {
-  fetch("/markers", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      marker: { lat: lat, lng: lng }
-    })
-  })
-  .then(res => res.json())
-  .then(marker => {
-    addMarker(marker.lat, marker.lng);
+    addMarker(e.latLng.lat(), e.latLng.lng());
   });
 }
 
 function addMarker(lat, lng) {
-  new google.maps.Marker({
+  const marker = new google.maps.Marker({
     position: { lat: Number(lat), lng: Number(lng) },
     map: map
   });
+
+  markers.push(marker);
 }
 
-function loadMarkers() {
-  fetch("/markers.json")
-  .then(res => res.json())
-  .then(markers => {
-    markers.forEach(m => addMarker(m.lat, m.lng));
-  });
+// 任意：全部消す用
+function clearMarkers() {
+  markers.forEach(marker => marker.setMap(null));
+  markers = [];
 }
 
 window.onload = initMap;
