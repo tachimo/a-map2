@@ -1,12 +1,12 @@
 <h1>Map</h1>
 
-<div id="map" style="height:500px;"></div>
-
 <div style="margin-bottom:10px;">
   <input id="address" type="text" placeholder="住所を入力" style="width:300px;">
   <button onclick="searchAddress()">検索</button>
   <button onclick="printMap()">印刷</button>
 </div>
+
+<div id="map" style="height:700px;"></div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
 
@@ -15,12 +15,13 @@ let map;
 let markers = [];
 let geocoder;
 
-function initMap() {
+window.initMap = function() {
   geocoder = new google.maps.Geocoder();
 
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 35.9356, lng: 139.5526 },
-    zoom: 12
+    zoom: 18,
+    scaleControl: true
   });
 
   // クリックでマーカー追加（DB使わない）
@@ -35,8 +36,26 @@ function addMarker(lat, lng) {
     map: map
   });
 
+  // シングルクリック（確認あり）
+  marker.addListener("click", function() {
+    if (confirm("このマーカーを削除しますか？")) {
+      removeMarker(marker);
+    }
+  });
+
+  // ダブルクリック（即削除）
+  marker.addListener("dblclick", function() {
+    removeMarker(marker);
+  });
+
   markers.push(marker);
 }
+
+function removeMarker(marker) {
+  marker.setMap(null);
+  markers = markers.filter(m => m !== marker);
+}
+
 
 // 住所検索追加
 function searchAddress() {
