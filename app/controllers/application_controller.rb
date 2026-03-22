@@ -10,12 +10,16 @@ class ApplicationController < ActionController::Base
   private
 
   def require_token
-    token = params[:token] || request.headers["X-ACCESS-TOKEN"]
+    expected = ENV["MAP_ACCESS_TOKEN"]
+    provided = params[:token]
 
-    unless ActiveSupport::SecurityUtils.secure_compare(
-      token.to_s,
-      ENV["MAP_ACCESS_TOKEN"].to_s
-    )
+    Rails.logger.debug "=== TOKEN DEBUG ==="
+    Rails.logger.debug "provided: #{provided}"
+    Rails.logger.debug "expected: #{expected}"
+    Rails.logger.debug "==================="
+
+    if expected.blank? || provided.blank? ||
+       !ActiveSupport::SecurityUtils.secure_compare(provided, expected)
       render plain: "Unauthorized", status: :unauthorized
     end
   end
