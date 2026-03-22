@@ -1,7 +1,7 @@
 <h1>Map</h1>
 
 <div style="margin-bottom:10px;">
-  <input id="address" type="text" placeholder="住所を入力" style="width:300px;">
+  <input id="address" type="text" value="上尾市" placeholder="住所を入力" style="width:300px;">
   <button onclick="searchAddress()">検索</button>
   <button onclick="printMap()">印刷</button>
 </div>
@@ -84,5 +84,16 @@ function clearMarkers() {
   markers.forEach(marker => marker.setMap(null));
   markers = [];
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById("address");
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      searchAddress();
+    }
+  });
+});
 
 </script>
