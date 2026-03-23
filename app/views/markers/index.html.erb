@@ -1,93 +1,151 @@
-<h1>Map</h1>
+<h1>釣果マップ</h1>
 
-<div style="margin-bottom:10px;">
-  <input id="address" type="text" value="上尾市" placeholder="住所を入力" style="width:300px;">
-  <button onclick="searchAddress()">検索</button>
-  <button onclick="printMap()">印刷</button>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<div style="padding:8px;">
+  <input id="address" type="text" placeholder="場所検索"
+    style="width:100%; height:44px; font-size:16px; padding:8px;">
+
+  <div style="margin-top:8px; display:flex; gap:8px;">
+    <button onclick="searchAddress()" style="flex:1; height:44px;">検索</button>
+    <button onclick="moveToCurrentLocation()" style="flex:1; height:44px;">現在地</button>
+    <button onclick="clearMarkers()" style="flex:1; height:44px;">全消去</button>
+  </div>
 </div>
 
-<div id="map" style="height:700px;"></div>
+<div id="map" style="height:calc(100vh - 140px);"></div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>"></script>
 
 <script>
 let map;
 let markers = [];
 let geocoder;
 
-window.initMap = function() {
+function initMap() {
   geocoder = new google.maps.Geocoder();
 
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 35.9356, lng: 139.5526 },
-    zoom: 18,
-    scaleControl: true
+    zoom: 14
   });
 
-  // クリックでマーカー追加（DB使わない）
+  loadMarkers();
+
   map.addListener("click", function(e) {
-    addMarker(e.latLng.lat(), e.latLng.lng());
+    addFishingMarker(e.latLng.lat(), e.latLng.lng());
   });
 }
 
-function addMarker(lat, lng) {
+window.addEventListener("load", initMap);
+
+// ===== 釣果マーカー追加 =====
+function addFishingMarker(lat, lng) {
+  const fish = prompt("魚種（例：バス）");
+  if (!fish) return;
+
+  const size = prompt("サイズ（例：45cm）") || "";
+  const memo = prompt("メモ（任意）") || "";
+
+  const date = new Date().toLocaleString();
+
+  const data = { lat, lng, fish, size, memo, date };
+
+  createMarker(data);
+  saveMarker(data);
+}
+
+// ===== マーカー生成 =====
+function createMarker(data) {
   const marker = new google.maps.Marker({
-    position: { lat: Number(lat), lng: Number(lng) },
+    position: { lat: data.lat, lng: data.lng },
     map: map
   });
 
-  // シングルクリック（確認あり）
-  marker.addListener("click", function() {
-    if (confirm("このマーカーを削除しますか？")) {
-      removeMarker(marker);
+  const info = new google.maps.InfoWindow({
+    content: `
+      <div style="font-size:14px;">
+        <strong>${data.fish}</strong><br>
+        ${data.size}<br>
+        ${data.memo}<br>
+        <small>${data.date}</small>
+      </div>
+    `
+  });
+
+  marker.addListener("click", () => {
+    info.open(map, marker);
+  });
+
+  // ダブルタップ削除
+  marker.addListener("dblclick", () => {
+    if (confirm("削除する？")) {
+      removeMarker(marker, data);
     }
   });
 
-  // ダブルクリック（即削除）
-  marker.addListener("dblclick", function() {
-    removeMarker(marker);
-  });
-
-  markers.push(marker);
+  markers.push({ marker, data });
 }
 
-function removeMarker(marker) {
+// ===== 削除 =====
+function removeMarker(marker, data) {
   marker.setMap(null);
-  markers = markers.filter(m => m !== marker);
+  markers = markers.filter(m => m.marker !== marker);
+
+  let saved = JSON.parse(localStorage.getItem("fishingMarkers") || "[]");
+  saved = saved.filter(m => m.date !== data.date);
+  localStorage.setItem("fishingMarkers", JSON.stringify(saved));
 }
 
+// ===== 保存 =====
+function saveMarker(data) {
+  const saved = JSON.parse(localStorage.getItem("fishingMarkers") || "[]");
+  saved.push(data);
+  localStorage.setItem("fishingMarkers", JSON.stringify(saved));
+}
 
-// 住所検索追加
+// ===== 読み込み =====
+function loadMarkers() {
+  const saved = JSON.parse(localStorage.getItem("fishingMarkers") || "[]");
+  saved.forEach(data => createMarker(data));
+}
+
+// ===== 全削除 =====
+function clearMarkers() {
+  if (!confirm("全部消す？")) return;
+
+  markers.forEach(m => m.marker.setMap(null));
+  markers = [];
+  localStorage.removeItem("fishingMarkers");
+}
+
+// ===== 検索 =====
 function searchAddress() {
   const address = document.getElementById("address").value;
   if (!address) return;
 
   geocoder.geocode({ address: address }, function(results, status) {
     if (status === "OK") {
-      const location = results[0].geometry.location;
-
-      map.setCenter(location);
-      addMarker(location.lat(), location.lng());
+      map.setCenter(results[0].geometry.location);
     } else {
-      alert("住所が見つかりません");
+      alert("見つからない");
     }
   });
 }
 
-// 印刷
-function printMap() {
-  window.print();
+// ===== 現在地 =====
+function moveToCurrentLocation() {
+  navigator.geolocation.getCurrentPosition((pos) => {
+    map.setCenter({
+      lat: pos.coords.latitude,
+      lng: pos.coords.longitude
+    });
+  });
 }
 
-// 任意：全部消す用
-function clearMarkers() {
-  markers.forEach(marker => marker.setMap(null));
-  markers = [];
-}
-
+// ===== Enter検索 =====
 document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("address");
-
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -95,5 +153,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
 </script>
